@@ -1,0 +1,27 @@
+[package]
+name = "rust-profiler"
+authors = ["ByteSudoer"]
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/ByteSudoer/Rust-Profiler"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.103"
+sysinfo = "0.29.5"
+
+[dependencies.axum]
+version = "0.6.9"
+features = ["macros", "ws"]
+
+
+[dependencies.tokio]
+version = "1.29.1"
+features = ["full"]
+
+[dependencies.tracing-subscriber]
+version = "0.3.17"
+features = ["env-filter"]
