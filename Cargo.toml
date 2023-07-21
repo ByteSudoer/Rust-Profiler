@@ -12,6 +12,7 @@ repository = "https://github.com/ByteSudoer/Rust-Profiler"
 [dependencies]
 serde_json = "1.0.103"
 sysinfo = "0.29.5"
+tracing = "0.1.37"
 
 [dependencies.axum]
 version = "0.6.9"
