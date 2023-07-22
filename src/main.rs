@@ -1,3 +1,4 @@
+mod system;
 use axum::Server;
 use axum::{
     http::Response,
@@ -5,6 +6,7 @@ use axum::{
 };
 use axum::{routing::get, Router};
 use std::env;
+use sysinfo::*;
 use tracing::*;
 
 fn init() {
@@ -16,13 +18,16 @@ fn init() {
 #[tokio::main]
 async fn main() {
     init();
-    let router = Router::new()
-        .route("/", get(root_get))
-        .route("/index.css", get(root_get_css));
-    let server = Server::bind(&"127.0.0.1:3000".parse().unwrap()).serve(router.into_make_service());
-    let addr = server.local_addr();
-    info!("Server listening on {addr}");
-    server.await.unwrap();
+    let cpuid = raw_cpuid::CpuId::new();
+    let cpu: system::cpu::Cpu = cpuid.into();
+    println!("Cpu : {}", cpu);
+    // let router = Router::new()
+    //     .route("/", get(root_get))
+    //     .route("/index.css", get(root_get_css));
+    // let server = Server::bind(&"127.0.0.1:3000".parse().unwrap()).serve(router.into_make_service());
+    // let addr = server.local_addr();
+    // info!("Server listening on {addr}");
+    // server.await.unwrap();
 }
 
 #[axum::debug_handler]
