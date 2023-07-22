@@ -20,7 +20,9 @@ async fn main() {
     init();
     let cpuid = raw_cpuid::CpuId::new();
     let cpu: system::cpu::Cpu = cpuid.into();
-    println!("Cpu : {}", cpu);
+    //println!("Cpu : {}", cpu);
+    let json = serde_json::to_string(&cpu).unwrap();
+    println!("Json CPU : {}", json);
     // let router = Router::new()
     //     .route("/", get(root_get))
     //     .route("/index.css", get(root_get_css));

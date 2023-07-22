@@ -1,9 +1,11 @@
 use raw_cpuid::*;
+use serde::{Deserialize, Serialize};
+use serde_json;
 use std::fmt;
 use sysinfo::*;
 use tracing::*;
 
-#[derive(Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Frequency {
     base: f64,
     max: f64,
@@ -42,7 +44,7 @@ pub fn get_cpu_core_count() -> Option<usize> {
         }
     }
 }
-#[derive(Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Cpu {
     vendor: String,
     model: String,
