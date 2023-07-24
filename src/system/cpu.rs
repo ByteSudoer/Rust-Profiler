@@ -1,6 +1,5 @@
 use raw_cpuid::*;
 use serde::{Deserialize, Serialize};
-use serde_json;
 use std::fmt;
 use sysinfo::*;
 use tracing::*;
