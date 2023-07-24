@@ -7,7 +7,6 @@ use axum::{
 };
 use axum::{routing::get, Router};
 use std::env;
-use sysinfo::*;
 use tracing::*;
 
 fn init() {
@@ -19,26 +18,14 @@ fn init() {
 #[tokio::main]
 async fn main() {
     init();
-    // let cpuid = raw_cpuid::CpuId::new();
-    // let cpu: system::cpu::Cpu = cpuid.into();
-    // println!("Cpu : {}", cpu);
-    // let json = serde_json::to_string(&cpu).unwrap();
-    // println!("Json CPU : {}", json);
-    let mut sys = sysinfo::System::new_all();
-    sys.refresh_all();
-    let disks = sys.disks();
-    for d in disks {
-        let disk: system::disks::Disk = system::disks::Disk::from_sysinfo_disk(d);
-        println!("Disk : {}", disk);
-    }
     let router = Router::new()
         .route("/", get(root_get))
         .route("/index.css", get(root_get_css))
-        .route("/json", get(get_cpu_info));
+        .route("/json", get(get_system_info));
     let server = Server::bind(&"127.0.0.1:3000".parse().unwrap()).serve(router.into_make_service());
-    // let addr = server.local_addr();
-    // info!("Server listening on {addr}");
-    // server.await.unwrap();
+    let addr = server.local_addr();
+    info!("Server listening on {addr}");
+    server.await.unwrap();
 }
 
 #[axum::debug_handler]
@@ -62,10 +49,9 @@ async fn root_get_css() -> impl IntoResponse {
 }
 
 #[axum::debug_handler]
-async fn get_cpu_info() -> impl IntoResponse {
-    let cpuid = raw_cpuid::CpuId::new();
-    let cpu: system::cpu::Cpu = cpuid.into();
-    let json_data = serde_json::to_string(&cpu).unwrap();
+async fn get_system_info() -> impl IntoResponse {
+    let full_system = system::full_system::FullSystem::new();
+    let json_data = serde_json::to_string(&full_system).unwrap();
     Response::builder()
         .header("content-type", "application/json")
         .body(json_data)

@@ -20,7 +20,7 @@ pub fn human_readable_size(size_bytes: u64) -> String {
 
 pub fn human_readable_to_bytes(size_str: &str) -> Option<u64> {
     let units: Vec<&str> = vec!["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-    let mut size_splited = size_str.trim().split_whitespace();
+    let mut size_splited = size_str.split_whitespace();
     if let Some(size_val) = size_splited.next() {
         if let Ok(size) = size_val.parse::<f64>() {
             if let Some(unit) = size_splited.next() {

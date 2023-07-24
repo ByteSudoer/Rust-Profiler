@@ -1,6 +1,7 @@
+use serde::{Deserialize, Serialize};
 use std::fmt;
 use sysinfo::*;
-#[derive(Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Disk {
     device_name: String,
     disk_type: String,
@@ -83,7 +84,30 @@ impl Default for Disk {
     }
 }
 
-#[derive(Debug)]
-struct Disks {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Disks {
     disks: Vec<Disk>,
+}
+
+impl Disks {
+    pub fn new() -> Self {
+        let mut sys = System::new_all();
+        sys.refresh_disks();
+        let disks_vec: Vec<Disk> = sys.disks().iter().map(Disk::from_sysinfo_disk).collect();
+        Self { disks: disks_vec }
+    }
+}
+impl Default for Disks {
+    fn default() -> Self {
+        let vec_disks = vec![Disk::default(), Disk::default()];
+        Self { disks: vec_disks }
+    }
+}
+impl fmt::Display for Disks {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        for disk in &self.disks {
+            writeln!(f, "Disk : {}", disk)?;
+        }
+        Ok(())
+    }
 }
