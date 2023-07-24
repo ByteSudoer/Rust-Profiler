@@ -1,5 +1,6 @@
 use crate::system::cpu::Cpu;
 use crate::system::disks::Disks;
+use crate::system::users::Users;
 use raw_cpuid::CpuId;
 use serde::{Deserialize, Serialize};
 use std::fmt;
@@ -8,6 +9,7 @@ use std::fmt;
 pub struct FullSystem {
     cpu: Cpu,
     disks: Disks,
+    users: Users,
 }
 
 impl FullSystem {
@@ -16,6 +18,7 @@ impl FullSystem {
         Self {
             cpu: cpuid.into(),
             disks: Disks::new(),
+            users: Users::new(),
         }
     }
 }
@@ -24,6 +27,7 @@ impl fmt::Display for FullSystem {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         writeln!(f, "Cpu : {}", self.cpu)?;
         writeln!(f, "Disks : {}", self.disks)?;
+        writeln!(f, "Users : {}", self.users)?;
         Ok(())
     }
 }

@@ -4,6 +4,7 @@ mod full_system;
 mod get_roots;
 mod return_404;
 mod return_500;
+mod users_info;
 
 use axum::{routing::get, Router};
 use cpu_info::get_cpu_info;
@@ -12,6 +13,9 @@ use full_system::get_full_system_info;
 use get_roots::{root_get, root_get_css};
 use return_404::return_404;
 use return_500::return_500;
+use users_info::get_one_user_by_name;
+use users_info::get_one_user_by_uid;
+use users_info::get_users_info;
 
 #[allow(dead_code)]
 pub fn create_route() -> Router {
@@ -21,6 +25,9 @@ pub fn create_route() -> Router {
         .route("/index.css", get(root_get_css))
         .route("/cpu_info", get(get_cpu_info))
         .route("/disk_info", get(get_disk_info))
+        .route("/users_info", get(get_users_info))
+        .route("/user_info/find/:user_name", get(get_one_user_by_name))
+        .route("/user_info/find_uid/:user_uid", get(get_one_user_by_uid))
         .route("/full_system", get(get_full_system_info))
         .route("/", get(root_get))
 }
