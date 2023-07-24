@@ -32,6 +32,6 @@ features = ["full"]
 version = "0.3.17"
 features = ["env-filter"]
 
-[lib]
-name = "utils"
-path = "src/lib.rs"
+# [lib]
+# name = "utils"
+# path = "src/lib.rs"
