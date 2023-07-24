@@ -2,6 +2,7 @@ pub fn convert_megahz_to_gigahz(freq: f64) -> f64 {
     freq / 1000.0
 }
 
+#[allow(dead_code)]
 pub fn convert_gigahz_to_megahz(freq: f64) -> f64 {
     freq * 1000.0
 }
@@ -18,6 +19,7 @@ pub fn human_readable_size(size_bytes: u64) -> String {
     format!("{:.2} {}", size, units[index])
 }
 
+#[allow(dead_code)]
 pub fn human_readable_to_bytes(size_str: &str) -> Option<u64> {
     let units: Vec<&str> = vec!["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     let mut size_splited = size_str.split_whitespace();

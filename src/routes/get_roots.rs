@@ -2,7 +2,6 @@ use axum::{
     http::Response,
     response::{Html, IntoResponse},
 };
-use tracing;
 
 #[axum::debug_handler]
 pub async fn root_get() -> impl IntoResponse {
@@ -24,4 +23,3 @@ pub async fn root_get_css() -> impl IntoResponse {
         .body(markup)
         .unwrap()
 }
-
