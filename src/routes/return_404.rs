@@ -1,4 +1,7 @@
-use axum::response::{Html, IntoResponse};
+use axum::{
+    http::StatusCode,
+    response::{Html, IntoResponse},
+};
 
 #[axum::debug_handler]
 pub async fn return_404() -> impl IntoResponse {
@@ -6,5 +9,5 @@ pub async fn return_404() -> impl IntoResponse {
         .await
         .unwrap();
     tracing::error!("404 Error Not Found");
-    Html(markup)
+    (StatusCode::NOT_FOUND, Html(markup)).into_response()
 }
