@@ -23,6 +23,16 @@ impl From<users::User> for User {
     }
 }
 
+impl User {
+    pub fn new(user_name: String, user_uid: u32, user_groups: Vec<String>) -> Self {
+        Self {
+            name: user_name,
+            uid: user_uid,
+            groups: user_groups,
+        }
+    }
+}
+
 impl Default for User {
     fn default() -> Self {
         Self {
