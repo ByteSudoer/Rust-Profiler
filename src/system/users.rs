@@ -23,6 +23,7 @@ impl From<users::User> for User {
     }
 }
 
+#[allow(dead_code)]
 impl User {
     pub fn new(user_name: String, user_uid: u32, user_groups: Vec<String>) -> Self {
         Self {

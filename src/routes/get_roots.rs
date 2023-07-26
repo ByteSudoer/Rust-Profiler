@@ -23,3 +23,16 @@ pub async fn root_get_css() -> impl IntoResponse {
         .body(markup)
         .unwrap()
 }
+
+#[axum::debug_handler]
+pub async fn root_get_mjs() -> impl IntoResponse {
+    let markup = tokio::fs::read_to_string("src/front/index.mjs")
+        .await
+        .unwrap();
+
+    tracing::info!("MJS file loaded");
+    Response::builder()
+        .header("content-type", "application/javascript;charset=utf-8")
+        .body(markup)
+        .unwrap()
+}
