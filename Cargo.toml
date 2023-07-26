@@ -33,6 +33,14 @@ features = ["full"]
 version = "0.3.17"
 features = ["env-filter"]
 
+[[bin]]
+name = "rust-profiler"
+path = "src/main.rs"
+
 # [lib]
 # name = "utils"
 # path = "src/lib.rs"
+
+[[bin]]
+name = "single_core"
+path = "benchmarks/lib.rs"
