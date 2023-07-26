@@ -2,6 +2,7 @@ mod cpu_info;
 mod disk_info;
 mod full_system;
 mod get_roots;
+mod memory_info;
 mod realtime_cpu;
 mod return_404;
 mod return_500;
@@ -12,6 +13,7 @@ use cpu_info::get_cpu_info;
 use disk_info::get_disk_info;
 use full_system::get_full_system_info;
 use get_roots::{root_get, root_get_css, root_get_mjs};
+use memory_info::get_memory_info;
 use return_404::return_404;
 use return_500::return_500;
 use users_info::get_one_user_by_name;
@@ -28,6 +30,7 @@ pub fn create_route() -> Router {
         .route("/index.mjs", get(root_get_mjs))
         .route("/cpu_info", get(get_cpu_info))
         .route("/disk_info", get(get_disk_info))
+        .route("/memory_info", get(get_memory_info))
         .route("/users_info", get(get_users_info))
         .route("/user_info/find/:user_name", get(get_one_user_by_name))
         .route("/user_info/find_uid/:user_uid", get(get_one_user_by_uid))
