@@ -1,4 +1,3 @@
-use std::env;
 use std::time::Instant;
 
 #[allow(dead_code)]
