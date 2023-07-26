@@ -4,6 +4,7 @@ mod full_system;
 mod get_roots;
 mod memory_info;
 mod realtime_cpu;
+mod realtime_memory;
 mod return_404;
 mod return_500;
 mod users_info;
@@ -36,4 +37,5 @@ pub fn create_route() -> Router {
         .route("/user_info/find_uid/:user_uid", get(get_one_user_by_uid))
         .route("/full_system", get(get_full_system_info))
         .merge(realtime_cpu::create_realtime_cpu_route())
+        .merge(realtime_memory::create_realtime_memory_route())
 }

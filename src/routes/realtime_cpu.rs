@@ -14,8 +14,12 @@ use crate::system::app_state::{AppState, Snapshot};
 
 pub fn create_realtime_cpu_route() -> Router {
     let (tx, _) = broadcast::channel::<Snapshot>(1);
+    let (tx2, _) = broadcast::channel::<f64>(1);
 
-    let app_state = AppState { tx: tx.clone() };
+    let app_state = AppState {
+        tx: tx.clone(),
+        tx_memory: tx2.clone(),
+    };
 
     // Update CPU usage in the background
     tokio::task::spawn_blocking(move || {
@@ -27,7 +31,10 @@ pub fn create_realtime_cpu_route() -> Router {
             std::thread::sleep(System::MINIMUM_CPU_UPDATE_INTERVAL);
         }
     });
+
     tracing::info!("CPU realtime requested");
+
+    println!("Appstate CPU : {:?}", app_state.tx.is_empty());
 
     Router::new()
         .route("/realtime/cpus", get(realtime_cpus_get))

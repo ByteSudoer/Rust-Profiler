@@ -4,13 +4,22 @@
   font-family: "Roboto", sans-serif;
 }
 
+.core-container {
+  color: #cc241d;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+
 body {
-  background: #0f0f0f;
+  background: #282828;
 }
 
 .bar {
-  background: #264653;
-  color: white;
+  background: #7c6f64;
+  color: #076678;
 
   width: 20em;
   height: 2em;
@@ -32,7 +41,7 @@ body {
 
   height: 100%;
 
-  background: #2a9d8f;
+  background: #eebd35;
   position: absolute;
   left: 0;
   top: 0;
