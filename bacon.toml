@@ -52,8 +52,6 @@ on_success = "back"                                                    # so that
 command = [
   "cargo",
   "run",
-  "--bin",
-  "rust-profiler",
   "--color",
   "always",
   # put launch parameters for your program behind a `--` separator
