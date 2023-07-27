@@ -5,8 +5,9 @@ This a web-based application used as a system and a resource monitor. It will pr
 
 <p align="center">
   <br>
-<img src="https://github.com/ByteSudoer/Rust-Profiler/assets/88513682/8a8310d8-4e44-4221-90e5-d20075f4a8cf" alt="GIF demo" />
+<img src="https://github.com/ByteSudoer/Rust-Profiler/assets/88513682/76dbef10-e5f5-4b73-9955-2940027004ba" alt="GIF demo" />
 </p>
+
 
 
 ## Installation
