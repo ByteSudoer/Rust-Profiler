@@ -3,6 +3,10 @@
 This a web-based application used as a system and a resource monitor. It will provide you wit information about current hardware specifications and live CPU/RAM usage.
 > This application uses w WebSocket to send the updates asynchronously so you can host this application on your server and you will get the same results with the same refresh rate from various connections.
 
+<p align="center">
+  <br>
+<img src="https://github.com/ByteSudoer/Rust-Profiler/assets/88513682/8a8310d8-4e44-4221-90e5-d20075f4a8cf" alt="GIF demo" />
+</p>
 
 
 ## Installation
