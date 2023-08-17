@@ -7,28 +7,9 @@
   <link type="text/css" rel="stylesheet" href="/index.css" />
 </head>
 
-<body>
-  <!-- <script> -->
-  <!--   const webSocket = new WebSocket("ws://localhost:3000/realtime/cpus"); -->
-  <!---->
-  <!--   // Event listener to handle messages from the server -->
-  <!--   webSocket.onmessage = (event) => { -->
-  <!--     const message = JSON.parse(event.data); -->
-  <!--     console.log("Received message:", message); -->
-  <!--     // Process the received message here -->
-  <!--   }; -->
-  <!---->
-  <!--   // Event listener to handle WebSocket connection opened -->
-  <!--   webSocket.onopen = () => { -->
-  <!--     console.log("WebSocket connection opened"); -->
-  <!--     // You can start sending messages after the connection is opened -->
-  <!--   }; -->
-  <!---->
-  <!--   // Event listener to handle WebSocket connection closed -->
-  <!--   webSocket.onclose = () => { -->
-  <!--     console.log("WebSocket connection closed"); -->
-  <!--   }; -->
-  <!-- </script> -->
+<body class="body">
+  <div class="data"></div>
+  <div id="graph" class="graph"></div>
 </body>
 
 </html>

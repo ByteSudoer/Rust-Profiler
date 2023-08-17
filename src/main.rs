@@ -1,4 +1,3 @@
-use dotenv;
 use rust_profiler::run;
 use std::env;
 mod routes;
