@@ -14,8 +14,36 @@
 }
 
 body {
-  background: #282828;
+  background: #3b3a3a;
 }
+
+.body-head {
+  text-align: center;
+  font-size: 30px;
+  color: #076678;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+}
+.title
+{
+  color: #eebd35;
+  font-size: 30px;
+  text-align: center;
+}
+
+.core {
+  margin: auto;
+  font-size: 30px;
+}
+
+.data {
+  color: #cc241d;
+}
+
 
 .bar {
   background: #7c6f64;
@@ -53,4 +81,20 @@ body {
 .bar,
 .bar-inner {
   border-radius: 4px;
+}
+
+table
+{
+  border: 1px solid;
+}
+td
+{
+  border: 1px solid;
+  color: #eebd35;
+}
+
+tr
+{
+  border: 1px solid;
+  color: #076678;
 }

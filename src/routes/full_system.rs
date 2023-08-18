@@ -8,7 +8,7 @@ pub async fn get_full_system_info() -> impl IntoResponse {
     let full_system = system::full_system::FullSystem::new();
     let json_data = serde_json::to_string(&full_system).unwrap();
     Response::builder()
-        .header("content-type", "application/json")
+        .header("Content-Type", "application/json")
         .body(json_data)
         .unwrap()
 }
