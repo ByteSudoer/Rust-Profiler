@@ -31,6 +31,6 @@ pub async fn run() {
 
     let server = axum::Server::bind(&url.parse().unwrap()).serve(app.into_make_service());
     let addr = server.local_addr();
-    info!("Server listening on {addr}");
+    info!("Server listening on http://{addr}");
     server.await.unwrap();
 }
