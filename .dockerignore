@@ -2,6 +2,5 @@
 .github/
 .gitignore
 target/
-Cargo.lock
 README.md
 LICENSE
