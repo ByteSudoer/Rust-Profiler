@@ -1,8 +1,29 @@
-FROM rust:1.71
+FROM rust:1.75 AS builder
+
+WORKDIR /usr/src/app
+
+COPY Cargo.lock .
+COPY Cargo.toml .
+
+RUN mkdir .cargo
+RUN cargo vendor > .cargo/config
+
+
+COPY ./src src
+COPY ./tests tests
+COPY ./benchmarks benchmarks
+RUN cargo build --release
+RUN cargo install --path . --verbose
+
+FROM ubuntu:latest
 
 WORKDIR /app
 
-COPY . .
-RUN cargo build --release
+COPY --from=builder /usr/local/cargo/bin/rust-profiler /app
 
-CMD ["./target/release/rust-profiler"]
+COPY .env .
+
+COPY ./src ./src
+
+CMD ["./rust-profiler"]
+
